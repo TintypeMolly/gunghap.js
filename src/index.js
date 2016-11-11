@@ -57,10 +57,6 @@ const gunghap = (p1, p2) => {
   return gunghapGenerator(arr);
 };
 
-for (const step of gunghap("트럼프", "아베")) {
-  console.log(step);
-}
-
 export {
   gunghap as default,
   gunghapGenerator,

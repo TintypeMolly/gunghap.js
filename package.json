@@ -4,7 +4,7 @@
   "description": "궁합 계산용 nodejs 라이브러리",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node ./node_modules/mocha/bin/_mocha",
     "postinstall": "babel src --out-dir lib"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "hangul-js": "^0.2.2"
   },
   "devDependencies": {
-    "babel-preset-latest": "^6.16.0"
+    "babel-preset-latest": "^6.16.0",
+    "mocha": "^3.1.2"
   }
 }
