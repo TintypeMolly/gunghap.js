@@ -1,6 +1,6 @@
 {
   "name": "gunghap.js",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "궁합 계산용 nodejs 라이브러리",
   "main": "src/index.js",
   "scripts": {
