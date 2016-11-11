@@ -21,6 +21,7 @@
     "hangul-js": "^0.2.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-preset-latest": "^6.16.0",
     "mocha": "^3.1.2"
   }
