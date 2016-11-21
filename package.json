@@ -1,8 +1,8 @@
 {
   "name": "gunghap.js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "궁합 계산용 nodejs 라이브러리",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "babel-node ./node_modules/mocha/bin/_mocha",
     "postinstall": "babel src --out-dir lib"
