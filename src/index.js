@@ -1,7 +1,7 @@
-import Hangul from "hangul-js";
-import hangulMap from "./hangulMap";
+import hangulJs from 'hangul-js';
+import hangulMap from './hangulMap';
 
-const step = (arr) => {
+const step = arr => {
   const result = [];
   for (let i = 0; i < arr.length - 1; i += 1) {
     const child = (arr[i] + arr[i + 1]) % 10;
@@ -10,20 +10,24 @@ const step = (arr) => {
   return result;
 };
 
-const countStrokes = (disassembled) => {
-  return disassembled.map((alphabet) => hangulMap[alphabet]).reduce((a, b) => a + b);
+const countStrokes = disassembled => {
+  return disassembled
+    .map(alphabet => hangulMap[alphabet])
+    .reduce((a, b) => a + b);
 };
 
 const gunghapGenerator = function*(arr) {
   let current;
-  if (arr.some(el => typeof el === "string"))  {
-    current = arr.map(character => countStrokes(Hangul.disassemble(character)));
+  if (arr.some(el => typeof el === 'string')) {
+    current = arr.map(character =>
+      countStrokes(hangulJs.disassemble(character))
+    );
     yield arr;
   } else {
     current = arr;
   }
   yield current;
-  
+
   while (current.length > 2) {
     current = step(current);
     yield current;
@@ -32,14 +36,18 @@ const gunghapGenerator = function*(arr) {
 };
 
 const checkGunghapArgument = (p1, p2) => {
-  if (typeof p1 !== "string" || typeof p2 !== "string") {
-    throw new Error("The type of two arguments must be string.");
+  if (typeof p1 !== 'string' || typeof p2 !== 'string') {
+    throw new Error('The type of two arguments must be string.');
   }
-  if (!Hangul.isComplete(p1) || !Hangul.isComplete(p2)) {
-    throw new Error("Both of the names must be in complete Korean character[가-힣]");
+  if (!hangulJs.isComplete(p1) || !hangulJs.isComplete(p2)) {
+    throw new Error(
+      'Both of the names must be in complete Korean character[가-힣]'
+    );
   }
   if (Math.abs(p1.length - p2.length) > 1) {
-    throw new Error("Length of the two names must be either same or different by 1.");
+    throw new Error(
+      'Length of the two names must be either same or different by 1.'
+    );
   }
 };
 
@@ -57,7 +65,4 @@ const gunghap = (p1, p2) => {
   return gunghapGenerator(arr);
 };
 
-export {
-  gunghap as default,
-  gunghapGenerator,
-}
+export { gunghap as default, gunghapGenerator };
